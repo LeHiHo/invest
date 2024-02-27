@@ -1,11 +1,18 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { BrowserRouter } from 'react-router-dom';
+import MainRouter from '@router/mainRouter';
 
-function App() {
+const queryClient = new QueryClient();
 
+const App = () => {
   return (
-    <>
-     <div>123</div>
-    </>
-  )
-}
-
-export default App
+    <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <MainRouter />
+        </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+};
+export default App;
